@@ -22,7 +22,7 @@ var params = {screen_name: 'wopbot'};
 function getTweets() { client.get('statuses/user_timeline', params, function(error, tweets, response) {
 			if (!error) {
 			
-			console.log(tweets.reduce( list => list, {} ));
+			console.log(tweets);
 			}
 			console.log(error)
 			}) } 
