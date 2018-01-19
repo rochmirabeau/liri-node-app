@@ -1,0 +1,26 @@
+{
+  "name": "liri-node-app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rochmirabeau/liri-node-app.git"
+  },
+  "author": "Roch Mirabeau",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rochmirabeau/liri-node-app/issues"
+  },
+  "homepage": "https://github.com/rochmirabeau/liri-node-app#readme",
+  "description": "",
+  "dependencies": {
+    "keys.js": "^1.0.2",
+    "node-spotify-api": "^1.0.7",
+    "spotify": "^0.3.0",
+    "spotify-web-api-node": "^2.5.0",
+    "twitter": "^1.7.1"
+  }
+}
