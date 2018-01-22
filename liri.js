@@ -21,8 +21,11 @@ var client = new Twitter({
 var params = {screen_name: 'wopbot'};
 function getTweets() { client.get('statuses/user_timeline', params, function(error, tweets, response) {
 			if (!error) {
+
+var results = tweets.map(alltweets => new Object ({date : alltweets.created_at, text : alltweets.text}))
 			
-			console.log(tweets);
+			console.log(JSON.stringify(results, null, 2))
+			return;
 			}
 			console.log(error)
 			}) } 
@@ -36,15 +39,22 @@ var spotify = new Spotify({
 });
  
 function getSong(search) {
-if (search === undefined) {search = 'All The Small Things'}
+if (search === undefined) {search = 'Slum Village Go Ladies'}
+//I know you guys wanted the sign but this song is way better
  spotify.search({ type: 'track', query: search}, function(err, data) {
   if (err) {
     return console.log('Error occurred: ' + err);
   }
 
-var result = JSON.stringify(data.tracks.items[0], null, 2)
-
-console.log(JSON.stringify(data.tracks.items[0], null, 2)); 
+var firstResult = [data.tracks.items[0]]
+var song = firstResult.map(item => new Object({
+	Artist: item.album["artists"][0]["name"],
+	Title: item.name, 
+	Album: item.album["name"],
+	Link: item.href}))
+// var song = firstResult.map(result => new Object ({Link: firstResult.href}))
+console.log(song)
+// console.log(JSON.stringify(data.tracks.items[0], null, 2)); 
 });
  }
 // end Spotify Section
