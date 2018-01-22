@@ -1,4 +1,5 @@
 var Twitter = require("twitter");
+var fs = require("fs");
 var keys = require("./keys.js");
 var Spotify = require('node-spotify-api');
 var request = require('request');
@@ -51,7 +52,7 @@ var song = firstResult.map(item => new Object({
 	Artist: item.album["artists"][0]["name"],
 	Title: item.name, 
 	Album: item.album["name"],
-	Link: item.href}))
+	Link: item.preview_url}))
 // var song = firstResult.map(result => new Object ({Link: firstResult.href}))
 console.log(song)
 // console.log(JSON.stringify(data.tracks.items[0], null, 2)); 
