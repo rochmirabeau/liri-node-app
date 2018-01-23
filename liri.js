@@ -5,10 +5,7 @@ var Spotify = require('node-spotify-api');
 var request = require('request');
 var omdb = require("./omdb.js");
 var command = process.argv[2]
-var search = process.argv.filter (x => process.argv.indexOf(x) > 2).join(" ")
-
-//console.log(search)
-
+var search = process.argv.filter (x => process.argv.indexOf(x) > 2).join(" ").trim()
 
 //Twitter Section
 var client = new Twitter({
@@ -40,7 +37,9 @@ var spotify = new Spotify({
 });
  
 function getSong(search) {
-if (search === undefined) {search = 'Slum Village Go Ladies'}
+console.log(search)
+
+if (search === "") {search = "Slum Village Go Ladies"}
 //I know you guys wanted the sign but this song is way better
  spotify.search({ type: 'track', query: search}, function(err, data) {
   if (err) {
