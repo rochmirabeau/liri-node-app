@@ -70,6 +70,28 @@ function getFilm(search) {
 // end OMDB Section
 
 
+// read file section
+
+
+function getRandom() {
+
+
+fs.readFile("./random.txt", 'utf8' , (err, data) => {
+  if (err) throw err;
+  console.log(data);
+  var execute = data.trim().split(',')
+  command = execute[0].slice(2)
+  search = execute[1]
+
+  run()
+});
+
+}
+
+// end read file section
+
+function run() {
+
 switch (command) {
 
 case  'my-tweets':
@@ -82,6 +104,7 @@ case  'movie-this':
 	getFilm(search);
   break;
 case  'do-what-it-says':
+	getRandom();
   break;
 case 'HELP':
 	console.log("Options: \n my-tweets \n spotify-this-song SONGNAME \n movie-this MOVIENAME \n do-what-it-says")
@@ -89,3 +112,5 @@ default:
 	console.log("Enter a command, type 'node liri.js HELP' if need be")
   break;
 }
+}
+run()
